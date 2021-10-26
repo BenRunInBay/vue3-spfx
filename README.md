@@ -15,6 +15,7 @@ The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sha
 ### Areas for improvement in this project
 1. Automate the embedding process (post-build)
 2. Allow for unique app IDs for each instance of the webpart so that multiple instances of the same webpart can be used on the same SharePoint page simultaneously.
+3. Sync the package version of the main web app with the webpart's package version and webpart version in webpart/config/package-solution.json
 
 
 ## How to set up a Vue 3/Vite/SPFX 1.12 project

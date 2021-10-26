@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "vue-3-vite-web-part-client-side-solution",
+    "name": "vue3-spfx-web-part-client-side-solution",
     "id": "b16568b1-370a-40a3-8b8a-60b33808e8da",
-    "version": "1.0.0.12",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -15,6 +15,6 @@
     }
   },
   "paths": {
-    "zippedPackage": "solution/vue-3-vite-web-part.sppkg"
+    "zippedPackage": "solution/vue3-spfx-web-part.sppkg"
   }
 }
