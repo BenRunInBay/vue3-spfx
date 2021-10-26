@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+webpart/.vscode
+webpart/dist
+webpart/lib
+webpart/node_modules
+webpart/release
+webpart/sharepoint
+webpart/temp

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "vue-3-vite-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/vue3ViteWebpart/Vue3ViteWebpartWebPart.js",
+          "manifest": "./src/webparts/vue3ViteWebpart/Vue3ViteWebpartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "Vue3ViteWebpartWebPartStrings": "lib/webparts/vue3ViteWebpart/loc/{locale}.js"
+  }
+}
