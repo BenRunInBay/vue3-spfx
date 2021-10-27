@@ -1,4 +1,8 @@
 <script lang="ts">
+/**
+ * The App is the top-level Vue component inside of the webpart
+ * Only put code and UI in the App that you want to appear in the webpart
+ */
 import { defineComponent, ComponentPublicInstance } from "vue";
 
 import { sp } from "@pnp/sp/presets/core";
