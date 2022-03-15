@@ -10,9 +10,6 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { escape } from '@microsoft/sp-lodash-subset';
-
-import * as strings from 'Vue3ViteWebpartWebPartStrings';
 
 import { getVueDOMElementHTML } from "../../lib/WebpartProperties";
 
@@ -40,12 +37,14 @@ export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpa
 
   public render(): void {
 
+    // get the webpart instance ID from the DOM element containing this webpart
     let instanceId = this.domElement.getAttribute("data-sp-feature-instance-id"),
       containerId = APPCLIENTID + (instanceId ? "-" + instanceId : "");
 
     this.domElement.innerHTML = "<span></span>";
 
     // timer is optional to delay rendering when user is editing properties
+    // to prevent that constant re-rendering of the webpart
     if (this.mountingTimer) clearTimeout(this.mountingTimer);
     this.mountingTimer = setTimeout(() => {
       this.domElement.innerHTML = getVueDOMElementHTML(containerId, this.properties);
@@ -55,7 +54,7 @@ export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpa
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.2');
+    return Version.parse('1.3');
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -63,11 +62,11 @@ export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpa
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Vue3 Vite SPFX 1.13.1 webpart"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "Webpart properties",
               groupFields: [
                 PropertyPaneTextField('heading', {
                   label: "Heading"
