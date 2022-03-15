@@ -5,6 +5,7 @@
 import { defineComponent, PropType } from "vue";
 
 export interface IDocument {
+  Id: number;
   Title: string;
 }
 
@@ -16,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <li>{{ item.Title }}</li>
+  <li>{{ item.Id }}: {{ item.Title }}</li>
 </template>
 
 <style scoped>

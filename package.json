@@ -1,6 +1,6 @@
 {
   "name": "vue3-spfx",
-  "version": "3.13.3",
+  "version": "3.13.4",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
