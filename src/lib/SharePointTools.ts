@@ -28,3 +28,6 @@ export function configureSharePoint(): void {
     });
 }
 
+export function isProduction(): boolean {
+    return (location != null && location.href != "" && location.href.indexOf("localhost") == -1);
+}

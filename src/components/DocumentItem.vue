@@ -1,4 +1,7 @@
 <script lang="ts">
+/**
+ * This is a sample of a Vue 3 component rendered inside of the webpart
+ */
 import { defineComponent, PropType } from "vue";
 
 export interface IDocument {

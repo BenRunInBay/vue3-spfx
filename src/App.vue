@@ -14,6 +14,7 @@ interface ICompData {
   heading: string;
   description: string;
   listName: string;
+  mockDataUrl: string;
   items: any[];
 }
 
@@ -24,7 +25,8 @@ export default defineComponent({
     return {
       heading: "",
       description: "",
-      listName: "Shared Documents",
+      listName: "",
+      mockDataUrl: "",
       items: []
     } as ICompData;
   },
@@ -37,21 +39,38 @@ export default defineComponent({
   },
   methods: {
     setPropertiesFromWebpart() {
-      this.heading = WebpartProperties.getPropertyValue(
+      this.heading = WebpartProperties.getPropertyString(
         this.$root as ComponentPublicInstance,
         "heading"
       );
-      this.description = WebpartProperties.getPropertyValue(
+      this.description = WebpartProperties.getPropertyString(
         this.$root as ComponentPublicInstance,
         "description"
       );
-      this.listName = WebpartProperties.getPropertyValue(
+      this.listName = WebpartProperties.getPropertyString(
         this.$root as ComponentPublicInstance,
         "list-name"
       );
+      this.mockDataUrl = WebpartProperties.getPropertyString(
+        this.$root as ComponentPublicInstance,
+        "mock-data-url"
+      );
     },
     async loadItemsFromSharePoint() {
-      this.items = await sp.web.lists.getByTitle(this.listName).items.get();
+      if (SharePointTools.isProduction()) this.items = await sp.web.lists.getByTitle(this.listName).items.get();
+      else if (this.mockDataUrl) {
+        fetch(this.mockDataUrl).then((response: Response) => {
+          response.json().then((itemData: any) => {
+            if (itemData) {
+              this.items = [...itemData];
+            }
+          }).catch(jsonError => {
+            throw jsonError;
+          });
+        }).catch(error => {
+          throw error;
+        });
+      }
     }
   }
 });
