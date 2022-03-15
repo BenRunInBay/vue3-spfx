@@ -21,7 +21,7 @@ The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sha
 2. Consider loading Vue3 from cloud rather than embedding in each webpart
 
 
-## How to set up a Vue 3/Vite/SPFX 1.31.1 project
+## Set up a Vue 3/Vite/SPFX 1.31.1 project
 1. Clone this repo and a template
 2. Delete the .git folder and re-initialize this as your own git repo
 3. Create your Vue 3 web app in your normal, preferred way, within the top-level of this folder

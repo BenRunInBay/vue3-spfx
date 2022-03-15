@@ -2,17 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "vue3-spfx-webpart-web-part": {
+    "vue-3-spfx-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/vue3ViteWebpart/Vue3ViteWebpartWebPart.js",
-          "manifest": "./src/webparts/vue3ViteWebpart/Vue3ViteWebpartWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/vue3Spfx/Vue3SpfxWebPart.js",
+          "manifest": "./src/webparts/vue3Spfx/Vue3SpfxWebPart.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "Vue3ViteWebpartWebPartStrings": "lib/webparts/vue3ViteWebpart/loc/{locale}.js"
+    "Vue3SpfxWebPartStrings": "lib/webparts/vue3Spfx/loc/{locale}.js"
   }
 }

@@ -22,9 +22,8 @@ import { renderVue } from "../assets/appcode/index.ID.js";
 import "../assets/appcode/index.ID.css";
 import "../assets/appcode/vendor.ID.js";
 
-// update all occurrences of the following two values to represent your specific webpart:
+// update all occurrences of the following value to represent your specific webpart:
 const APPCLIENTID = "UNIQUECLIENTAPP";
-const APPNAME = "WEBPART";
 
 // Define the editable properties
 export interface IWebpartWebPartProps {

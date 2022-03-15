@@ -1,5 +1,3 @@
-import { ComponentPublicInstance, ComponentOptionsBase } from "vue";
-
 const dashToCamel = (str: string) => {
     return str.replace(/\W+(.)/g, (index, chr) => {
         return chr.toUpperCase();

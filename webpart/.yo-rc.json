@@ -1,10 +1,11 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
     "environment": "spo",
     "version": "1.13.1",
-    "libraryName": "APPNAME",
-    "libraryId": "APPID from config/package-solution",
+    "libraryName": "vue-3-spfx",
+    "libraryId": "3d2f5489-817c-4cdc-bc74-01f350405ddb",
     "packageManager": "npm",
     "isDomainIsolated": false,
     "componentType": "webpart"
