@@ -1,8 +1,14 @@
 /**
  * The Webpart container
- * 1. Creates an element for the Vue app to render in
- * 2. Describes editable properties
- * 3. Passes properties to the Vue app
+ * 
+ * REPLACE the contents of your webpart with this code
+ * REPLACE all occurrences of UNIQUECLIENTAPP across the entire project (root and webpart/) with an ID value to represent your specific webpart
+ * MODIFY getPropertyPaneConfiguration() with your editable properties
+ * 
+ * This webpart will:
+ * 1. Create an element for the Vue app to render in
+ * 2. Describe editable properties
+ * 3. Passes the properties to the Vue app
  */
 import { Version, Environment, EnvironmentType, DisplayMode } from '@microsoft/sp-core-library';
 import {
@@ -13,13 +19,13 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import { getVueDOMElementHTML } from "../../lib/WebpartProperties";
 
-// Make.ps1 utility should automatically update these paths after each build of the Vue app
+// The make.ps1 utility should automatically update the following paths after each build of the Vue app
 // using the bundle-webpart-assets.js Node script:
 import { renderVue } from "../assets/appcode/index.ID.js";
 import "../assets/appcode/index.ID.css";
 import "../assets/appcode/vendor.ID.js";
 
-// update all occurrences of the following value to represent your specific webpart:
+// Update all occurrences of the following value to represent your specific webpart:
 const APPCLIENTID = "UNIQUECLIENTAPP";
 
 // Define the editable properties
@@ -36,24 +42,29 @@ export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpa
 
   public render(): void {
 
+    // get the webpart instance ID from the DOM element containing this webpart
     let instanceId = this.domElement.getAttribute("data-sp-feature-instance-id"),
       containerId = APPCLIENTID + (instanceId ? "-" + instanceId : "");
 
     this.domElement.innerHTML = "<span></span>";
 
     // timer is optional to delay rendering when user is editing properties
+    // to prevent that constant re-rendering of the webpart
     if (this.mountingTimer) clearTimeout(this.mountingTimer);
     this.mountingTimer = setTimeout(() => {
+      // insert the Vue app containing element with property values included
       this.domElement.innerHTML = getVueDOMElementHTML(containerId, this.properties);
+      // call the Vue render function
       renderVue(`#${containerId}`);
     }, 500);
 
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.2');
+    return Version.parse('1.0');
   }
 
+  // Modify this section with editable properties you want to provide to your webpart
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
