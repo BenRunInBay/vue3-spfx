@@ -10,9 +10,6 @@ import {
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { escape } from '@microsoft/sp-lodash-subset';
-
-import * as strings from 'YOURWebPartStrings';
 
 import { getVueDOMElementHTML } from "../../lib/WebpartProperties";
 
@@ -62,11 +59,11 @@ export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpa
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Vue3 Webpart"
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: "Webpart properties",
               groupFields: [
                 PropertyPaneTextField('heading', {
                   label: "Heading"

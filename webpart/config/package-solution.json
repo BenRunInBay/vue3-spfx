@@ -1,20 +1,20 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
-  "solution": {
-    "name": "vue-3-spfx-client-side-solution",
-    "id": "3d2f5489-817c-4cdc-bc74-01f350405ddb",
-    "version": "1.0.0.0",
-    "includeClientSideAssets": true,
-    "isDomainIsolated": false,
-    "developer": {
-      "name": "",
-      "websiteUrl": "",
-      "privacyUrl": "",
-      "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.13.1"
-    }
-  },
-  "paths": {
-    "zippedPackage": "solution/vue-3-spfx.sppkg"
-  }
+	"$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+	"solution": {
+		"name": "vue-3-spfx-client-side-solution",
+		"id": "3d2f5489-817c-4cdc-bc74-01f350405ddb",
+		"version": "3.13.3.0",
+		"includeClientSideAssets": true,
+		"isDomainIsolated": false,
+		"developer": {
+			"name": "",
+			"websiteUrl": "",
+			"privacyUrl": "",
+			"termsOfUseUrl": "",
+			"mpnId": "Undefined-1.13.1"
+		}
+	},
+	"paths": {
+		"zippedPackage": "solution/vue-3-spfx.sppkg"
+	}
 }
