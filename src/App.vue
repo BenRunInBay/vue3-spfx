@@ -85,7 +85,7 @@ export default defineComponent({
 </template>
 
 <style>
-#vue3vitewebpartapp {
+#UNIQUECLIENTAPP {
   font-family: Arial, sans-serif;
   color: #2c3e50;
   background-color: white;

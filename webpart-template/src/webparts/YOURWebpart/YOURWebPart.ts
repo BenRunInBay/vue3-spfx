@@ -12,15 +12,15 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import * as strings from 'Vue3ViteWebpartWebPartStrings';
+import * as strings from 'YOURWebPartStrings';
 
 import { getVueDOMElementHTML } from "../../lib/WebpartProperties";
 
 // Make.ps1 utility should automatically update these paths after each build of the Vue app
 // using the bundle-webpart-assets.js Node script:
-import { renderVue } from "../assets/appcode/index.95f3fcc4.js";
-import "../assets/appcode/index.00b8df5b.css";
-import "../assets/appcode/vendor.333eb2ee.js";
+import { renderVue } from "../assets/appcode/index.ID.js";
+import "../assets/appcode/index.ID.css";
+import "../assets/appcode/vendor.ID.js";
 
 // update all occurrences of the following two values to represent your specific webpart:
 const APPCLIENTID = "UNIQUECLIENTAPP";
