@@ -15,7 +15,7 @@ function Log {
 }
 
 Log "Webpart build, bundle and ship:"
-Log "REMINDER: update version in package.json before running this script."
+Log "REMINDER: update version in package.json before running this script because that will become the version of the webpart package."
 
 Log "Building webpart..."
 npm run build

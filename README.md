@@ -44,26 +44,36 @@ export default defineConfig({
 8. Replace your webpart.ts file contents with the one from the webpart-template/src/YOURWebpart/ folder
 9. Copy the webpart-template/src/lib/ folder into webpart/src/
 10. Replace all occurences of UNIQUECLIENTAPP with an ID name representing your web part
-11. Build and ship the webpart using:
+11. Test your web part locally:
+```shell
+npm run dev
+```
+12. Confirm that you can build the webpart, which should populate the webpart/src/webparts/assets/ folder with the distribution files. This process is repeated when run the make script but it's good to do a test build the first time. Once it appears to build correctly, use the make script going forward to build AND ship the webpart (see next step).
+```shell
+npm run build
+```
+13. Build and ship the webpart using:
 ```shell
 ./make
 ```
-12. This should create the webpart sharepoint/solution/...sppkg package that you can upload to the SharePoint site's App Catalog
-13. Follow the normal procedure for [deploying your webpart to SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page)
-14. When the webpart is initialized, it will:
+14. This should create the webpart sharepoint/solution/...sppkg package that you can upload to the SharePoint site's App Catalog
+15. Follow the normal procedure for [deploying your webpart to SharePoint](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/serve-your-web-part-in-a-sharepoint-page)
+16. When the webpart is initialized, it will:
     - run the render function
     - create an app element
     - call the Vue app scripts to run and populate that element with the Vue app
+	- optionally, pass editable properties into the Vue app (see Editable properties below)
 
 
 ### @PnP/SP
 If using @pnp/sp to connect with the SharePoint site:
-1. Install it at the web app level (not the web part sub-project):
+1. Install it at the project web app level (not the webpart/ sub-project):
 ```shell
 npm install @pnp/sp
 ```
 10. Configure 'sp' in src/App.vue with the base path of the SharePoint site containing the web part. See example code in src/App.vue and src/lib/SharePointTools.ts
 11. You do not need to initialize 'sp' in the webpart. Just use it directly from the Vue 3 web app.
+12. This project is using @pnp/sp v2, not v3 which is the latest
 
 
 ### Editable properties and passing them to the Vue 3 web app
@@ -75,14 +85,24 @@ npm install @pnp/sp
 
 ### Updating the app (and webpart)
 Make changes to the Vue3 app in your normal way. Then:
-1. Update package.json version
-2. Run:
+1. Update package.json version (in the project directory, NOT the webpart/ subdirectory)
+2. From the project directory, run:
 ```shell
 ./make
 ```
-3. An SharePoint webpart package file with the new version number will be created that you can drag into the site's App Catalog
+3. A SharePoint webpart package file with the new version number will be created that you can drag into the site's App Catalog:
+webpart/sharepoint/solution/
 
 ### TSConfig
 These settings in tsconfig.ts may be helpful:
 - "skipLibCheck": true // to ignore type errors in packages such as @pnp/sp
-- "exclude": ["**/*.stories.ts"] // to ignore react JSX types that don't apply to a Vue app:
+- "exclude": ["**/*.stories.ts"] // to ignore react JSX types that don't apply to a Vue app
+
+### package.json settings:
+@LOLCATATONIA added these to webpart/package.json but this created build errors for me:
+```
+"dependencies": {
+"@types/react-dom": "16.8.0",
+"@types/react": "16.8.0"
+}
+```
