@@ -1,6 +1,6 @@
 {
   "name": "vue3-spfx",
-  "version": "3.13.4",
+  "version": "3.14.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -8,12 +8,12 @@
   },
   "dependencies": {
     "@pnp/sp": "^2.12.0",
-    "vue": "^3.2.31"
+    "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.0",
-    "typescript": "^4.4.3",
-    "vite": "^2.8.3",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.12",
     "vue-tsc": "^0.37.5"
   }
 }
