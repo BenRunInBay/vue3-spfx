@@ -2,13 +2,13 @@
 
 ## Sample Vue 3 app built using Vite that is embedded within an SPFX 1.13.1 webpart
 
-The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) v1.31.1 does not have an option for Vue in their [Yeoman generator](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/toolchain/scaffolding-projects-using-yeoman-sharepoint-generator). The [PnP/SPFX generator](https://pnp.github.io/generator-spfx/#spfx-generator-version) has not been updated to support Vue 3 nor SPFX 1.13.1. This project serves as a brute-force sample of how you could develop in Vue 3 (and optionally Vite as your build environment) and then incorporate it into the latest version of SPFX webparts.
+The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) v1.13.1 does not have an option for Vue in their [Yeoman generator](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/toolchain/scaffolding-projects-using-yeoman-sharepoint-generator). The [PnP/SPFX generator](https://pnp.github.io/generator-spfx/#spfx-generator-version) has not been updated to support Vue 3 nor SPFX 1.13.1. This project serves as a brute-force sample of how you could develop in Vue 3 (and optionally Vite as your build environment) and then incorporate it into the latest version of SPFX webparts.
 
 
 ### Reasons you might use this project
 1. You want to develop SPFX webparts (or application extensions) in [Vue 3](https://v3.vuejs.org/)
 2. During development you want to take advantage of TDD and hot reloading that Webpack or [Vite](https://vitejs.dev/) provides, which tends to be much faster than the gulp-based SharePoint workbench.
-3. You want to use Node v14. Previous versions of SPFX require Node v10 and do not work on later versions, whereas SPFX v1.31.1 works on Node v14.
+3. You want to use Node v14. Previous versions of SPFX require Node v10 and do not work on later versions, whereas SPFX v1.13.1 works on Node v14.
 
 
 ### Recent improvement in this project
@@ -21,7 +21,7 @@ The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sha
 2. Consider loading Vue3 from cloud rather than embedding in each webpart
 
 
-## Set up a Vue 3/Vite/SPFX 1.31.1 project
+## Set up a Vue 3/Vite/SPFX 1.13.1 project
 1. Clone this repo to use for your webpart as a template
 2. Delete the .git folder and re-initialize this as your own git repo
 3. Create your Vue 3 web app in your normal, preferred way, within the top-level of this folder
