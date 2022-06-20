@@ -1,6 +1,6 @@
 /*
     Build and ship webpart
-    @date 2022-03-15
+    @date 2022-04-13
     This script looks for a built collection of files to reference within the webpart, which will render it.
     See the webpart/src/webparts/Vue3ViteWebPart.ts file for further comments.
 */
@@ -87,10 +87,10 @@ const logStatus = (message) => {
                     indexJsAsset = assetFiles.find((file) => file.match(/index\.[\w\d]+.js/ig) != null),
                     indexCssAsset = assetFiles.find((file) => file.match(/index\.[\w\d]+.css/ig) != null),
                     vendorJsAsset = assetFiles.find((file) => file.match(/vendor\.[\w\d]+.js/ig) != null);
-                if (script && indexJsAsset && indexCssAsset && vendorJsAsset) {
+                if (script && indexJsAsset && indexCssAsset) {
                     script = replaceLine(script, INDEX_JS, indexJsAsset.replace("index", ""), SUFFIX);
                     script = replaceLine(script, INDEX_CSS, indexCssAsset.replace("index", ""), SUFFIX);
-                    script = replaceLine(script, VENDOR_JS, vendorJsAsset.replace("vendor", ""), SUFFIX);
+                    if (vendorJsAsset) script = replaceLine(script, VENDOR_JS, vendorJsAsset.replace("vendor", ""), SUFFIX);
                 }
                 fs.writeFileSync(webpartFilePath, script);
                 logStatus("Webpart script references new assets.");
