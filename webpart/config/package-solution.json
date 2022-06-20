@@ -3,7 +3,7 @@
 	"solution": {
 		"name": "vue-3-spfx-client-side-solution",
 		"id": "3d2f5489-817c-4cdc-bc74-01f350405ddb",
-		"version": "3.13.4.0",
+		"version": "3.14.0.0",
 		"includeClientSideAssets": true,
 		"isDomainIsolated": false,
 		"developer": {

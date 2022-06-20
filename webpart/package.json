@@ -14,8 +14,6 @@
     "@microsoft/sp-office-ui-fabric-core": "1.13.1",
     "@microsoft/sp-property-pane": "1.13.1",
     "@microsoft/sp-webpart-base": "1.13.1",
-    "@types/react-dom": "16.8.0",
-    "@types/react": "16.8.0",
     "typescript": "^4.6.3"
   },
   "devDependencies": {
