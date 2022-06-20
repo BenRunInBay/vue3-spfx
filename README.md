@@ -36,9 +36,9 @@ yo @microsoft/sharepoint
 export default defineConfig({
 	  plugins: [vue()],
 	  build: {
-	    outDir: "webpart/src/webparts/assets"
+	    outDir: "webpart/src/webparts/assets",
+	    assetsDir: "appcode"
 	  },
-	  assetsDir: "appcode"
 	})
 ```
 8. Replace your webpart.ts file contents with the one from the webpart-template/src/YOURWebpart/ folder
