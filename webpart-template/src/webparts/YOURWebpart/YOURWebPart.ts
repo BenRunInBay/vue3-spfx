@@ -23,7 +23,7 @@ import { getVueDOMElementHTML } from "../../lib/WebpartProperties";
 // using the bundle-webpart-assets.js Node script:
 import { renderVue } from "../assets/appcode/index.ID.js";
 import "../assets/appcode/index.ID.css";
-import "../assets/appcode/vendor.ID.js";
+// import "../assets/appcode/vendor.ID.js";
 
 // Update all occurrences of the following value to represent your specific webpart:
 const APPCLIENTID = "UNIQUECLIENTAPP";
