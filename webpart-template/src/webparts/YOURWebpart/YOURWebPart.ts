@@ -38,12 +38,12 @@ export interface IWebpartWebPartProps {
 export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpartWebPartProps> {
 
   // timer is optional to delay rendering
-  private mountingTimer = null;
+  private mountingTimer: any = null;
 
   public render(): void {
 
     // get the webpart instance ID from the DOM element containing this webpart
-    let instanceId = this.domElement.getAttribute("data-sp-feature-instance-id"),
+    let instanceId = this.context.instanceId,
       containerId = APPCLIENTID + (instanceId ? "-" + instanceId : "");
 
     this.domElement.innerHTML = "<span></span>";
@@ -53,7 +53,7 @@ export default class Vue3ViteWebpartWebPart extends BaseClientSideWebPart<IWebpa
     if (this.mountingTimer) clearTimeout(this.mountingTimer);
     this.mountingTimer = setTimeout(() => {
       // insert the Vue app containing element with property values included
-      this.domElement.innerHTML = getVueDOMElementHTML(containerId, this.properties);
+      this.domElement.innerHTML = getVueDOMElementHTML(containerId, this.properties, instanceId);
       // call the Vue render function
       renderVue(`#${containerId}`);
     }, 500);

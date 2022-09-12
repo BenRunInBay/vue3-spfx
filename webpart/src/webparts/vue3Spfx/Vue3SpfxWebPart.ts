@@ -43,7 +43,7 @@
    public render(): void {
  
      // get the webpart instance ID from the DOM element containing this webpart
-     let instanceId = this.domElement.getAttribute("data-sp-feature-instance-id"),
+     let instanceId = this.context.instanceId,
        containerId = APPCLIENTID + (instanceId ? "-" + instanceId : "");
  
      this.domElement.innerHTML = "<span></span>";
@@ -52,7 +52,7 @@
      if (this.mountingTimer) clearTimeout(this.mountingTimer);
      this.mountingTimer = setTimeout(() => {
        // insert the Vue app containing element with property values included
-      this.domElement.innerHTML = getVueDOMElementHTML(containerId, this.properties);
+      this.domElement.innerHTML = getVueDOMElementHTML(containerId, this.properties, instanceId);
       // call the Vue render function
       renderVue(`#${containerId}`);
      }, 500);
