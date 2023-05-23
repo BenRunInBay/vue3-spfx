@@ -7,11 +7,11 @@
 #>
 
 function Log {
-    param (
-        $Message
-    )
-    Write-Host $Message -ForegroundColor yellow -BackgroundColor black
-    Write-Host " "
+	param (
+		$Message
+	)
+	Write-Host $Message -ForegroundColor yellow -BackgroundColor black
+	Write-Host " "
 }
 
 Log "Webpart build, bundle and ship:"
@@ -32,11 +32,11 @@ $params = @($programPath)
 & $cmd $params
 
 Log "Packaging for shipping to SharePoint..."
-cd webpart
+Set-Location webpart
 gulp clean
 gulp bundle --ship
 gulp package-solution --ship
-cd ..
+Set-Location ..
 
 Log "DONE."
 Log "Webpart package for uploading to App Catalog is in: webpart/sharepoint/solution/"
