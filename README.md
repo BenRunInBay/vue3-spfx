@@ -116,14 +116,3 @@ These settings in tsconfig.ts may be helpful:
 
 - "skipLibCheck": true // to ignore type errors in packages such as @pnp/sp
 - "exclude": ["**/*.stories.ts"] // to ignore react JSX types that don't apply to a Vue app
-
-### package.json settings
-
-@LOLCATATONIA added these to webpart/package.json but this created build errors for me:
-
-```json
-"dependencies": {
-"@types/react-dom": "16.8.0",
-"@types/react": "16.8.0"
-}
-```
