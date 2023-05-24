@@ -1,12 +1,55 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
 node_modules
-.DS_Store
 dist
 dist-ssr
 *.local
-webpart/.vscode
-webpart/dist
-webpart/lib
-webpart/node_modules
-webpart/release
-webpart/sharepoint
-webpart/temp
+.eslintrc.js
+
+# Editor directories and files
+.vscode
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# appcode assets
+index-*.js
+index-*.css
+index-*.d.ts
+index.*.js
+index.*.css
+index.*.d.ts
+
+# Build generated files
+lib
+release
+solution
+temp
+*.sppkg
+.heft
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Visual Studio files
+.ntvs_analysis.dat
+.vs
+bin
+obj
+
+# Resx Generated Code
+*.resx.ts
+
+# Styles Generated Code
+*.scss.ts

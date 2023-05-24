@@ -7,11 +7,11 @@
 #>
 
 function Log {
-    param (
-        $Message
-    )
-    Write-Host $Message -ForegroundColor yellow -BackgroundColor black
-    Write-Host " "
+	param (
+		$Message
+	)
+	Write-Host $Message -ForegroundColor yellow -BackgroundColor black
+	Write-Host " "
 }
 
 Log "Webpart build, bundle and ship:"
@@ -19,11 +19,17 @@ Log "REMINDER: update version in package.json before running this script because
 
 Log "Building webpart..."
 npm run build
+
 Remove-Item webpart/src/webparts/assets/fonts -Recurse -Force -ErrorAction Ignore
 Remove-Item webpart/src/webparts/assets/mock-data -Recurse -Force -ErrorAction Ignore
 Remove-Item webpart/src/webparts/assets/*.ico -ErrorAction Ignore
 Remove-Item webpart/src/webparts/assets/*.html -ErrorAction Ignore
 Remove-Item webpart/src/webparts/assets/*.css -ErrorAction Ignore
+
+Log "Creating declaration file for index js..."
+Remove-Item webpart\src\webparts\assets\appcode\*.d.ts -ErrorAction Ignore
+$indexjsname = (Get-ChildItem -Path "webpart\src\webparts\assets\appcode" *.js | Select-Object BaseName).BaseName
+New-Item -Path "webpart\src\webparts\assets\appcode" -Name "$indexjsname.d.ts" -Value "export = '$indexjsname'; export declare function renderVue(appID);"
 
 Log "Bundling assets..."
 $programPath = "node_scripts\bundle-webpart-assets.js"
@@ -32,11 +38,11 @@ $params = @($programPath)
 & $cmd $params
 
 Log "Packaging for shipping to SharePoint..."
-cd webpart
+Set-Location webpart
 gulp clean
 gulp bundle --ship
 gulp package-solution --ship
-cd ..
+Set-Location ..
 
 Log "DONE."
 Log "Webpart package for uploading to App Catalog is in: webpart/sharepoint/solution/"
