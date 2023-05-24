@@ -1,40 +1,41 @@
 # Vue 3 + SPFX 1.13.1 + Typescript + Vite
 
-## Sample Vue 3 app built using Vite that is embedded within an SPFX 1.13.1 webpart
+## Sample Vue 3 app built using Vite that is embedded within an SPFX 1.16.1 webpart
 
-The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) v1.13.1 does not have an option for Vue in their [Yeoman generator](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/toolchain/scaffolding-projects-using-yeoman-sharepoint-generator). The [PnP/SPFX generator](https://pnp.github.io/generator-spfx/#spfx-generator-version) has not been updated to support Vue 3 nor SPFX 1.13.1. This project serves as a brute-force sample of how you could develop in Vue 3 (and optionally Vite as your build environment) and then incorporate it into the latest version of SPFX webparts.
+The [Microsoft SharePoint Framework (SPFX)](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-development-environment) v1.16.1 does not have an option for Vue in their [Yeoman generator](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/toolchain/scaffolding-projects-using-yeoman-sharepoint-generator). The [PnP/SPFX generator](https://pnp.github.io/generator-spfx/#spfx-generator-version) has not been updated to support Vue 3 nor SPFX 1.16.1. This project serves as a brute-force sample of how you could develop in Vue 3 (and optionally Vite as your build environment) and then incorporate it into the latest version of SPFX webparts.
 
 ### Reasons you might use this project
 
 1. You want to develop SPFX webparts (or application extensions) in [Vue 3](https://v3.vuejs.org/)
 2. During development you want to take advantage of TDD and hot reloading that Webpack or [Vite](https://vitejs.dev/) provides, which tends to be much faster than the gulp-based SharePoint workbench.
-3. You want to use Node v14. Previous versions of SPFX require Node v10 and do not work on later versions, whereas SPFX v1.13.1 works on Node v14.
+3. You want to use Node v16. Previous versions of SPFX require Node v14 or v10 and do not work on later versions, whereas SPFX v1.16.1 works on Node v16.
 
 ### Recent improvement in this project
 
 1. Automated the embedding process (post-build)
 2. Allowed for unique app IDs for each instance of the webpart so that multiple instances of the same webpart can be used on the same SharePoint page simultaneously.
 3. Synchronized the package.json version of the main web app with the webpart's package version and webpart version in webpart/config/package-solution.json
+4. Update to SPFX 1.16.1, Node v16, Typescript v5, Vite v4, and PnP/SP v3.
 
 ### Improvements to make in the future
 
 1. Create a script to scaffold a new project based on this structure
 2. Consider loading Vue3 from cloud rather than embedding in each webpart
 
-## Set up a Vue 3/Vite/SPFX 1.13.1 project
+## Set up a Vue 3/Vite/SPFX 1.16.1 project
 
 1. Clone this repo to use for your webpart as a template
 2. Delete the .git folder and re-initialize this as your own git repo
-3. Create your Vue 3 web app in your normal, preferred way, within the top-level of this folder
+3. Create your Vue 3 web app in your normal, preferred way, within the top-level of this folder, replacing the sample Vue 3 app that is there
 4. The index.html will allow you to develop and test the webpart web app inside of a simple container to mimick a SharePoint page
-5. Delete the contents of the webpart/ folder
-6. Generate the SPFX webpart inside of the webpart folder, selecting "No javascript framework":
+5. Delete the contents of the sample webpart/ folder
+6. Generate your SPFX webpart inside of the webpart folder, selecting "No javascript framework":
 
 ```shell
 yo @microsoft/sharepoint
 ```
 
-1. If using Vite, modify /vite.config.ts to set the output directory by adding the following **build** and **assetsDir** options:
+1. If using Vite, modify /vite.config.ts to set the output directory, also disable minification and const bindings, by adding the following options:
 
 ```javascript
 export default defineConfig({
@@ -42,6 +43,14 @@ export default defineConfig({
   build: {
     outDir: "webpart/src/webparts/assets",
     assetsDir: "appcode",
+    minify: false,
+    rollupOptions: {
+      output: {
+        generatedCode: {
+          constBindings: false,
+        },
+      },
+    },
   },
 });
 ```
@@ -49,13 +58,13 @@ export default defineConfig({
 1. Replace your webpart.ts file contents with the one from the webpart-template/src/YOURWebpart/ folder
 2. Copy the webpart-template/src/lib/ folder into webpart/src/
 3. Replace all occurences of UNIQUECLIENTAPP with an ID name representing your web part
-4. Test your web part locally:
+4. Test your Vue app locally:
 
 ```shell
 npm run dev
 ```
 
-1. Confirm that you can build the webpart, which should populate the webpart/src/webparts/assets/ folder with the distribution files. This process is repeated when run the make script but it's good to do a test build the first time. Once it appears to build correctly, use the make script going forward to build AND ship the webpart (see next step).
+1. Confirm that you can build the webpart, which should populate the webpart/src/webparts/assets/appcode/ folder with the distribution files. This process is repeated when run the make script but it's good to do a test build the first time. Once it appears to build correctly, use the make script going forward to build AND ship the webpart (see next step).
 
 ```shell
 npm run build
@@ -86,8 +95,8 @@ npm install @pnp/sp
 ```
 
 1. Configure 'sp' in src/App.vue with the base path of the SharePoint site containing the web part. See example code in src/App.vue and src/lib/SharePointTools.ts
-1. You do not need to initialize 'sp' in the webpart. Just use it directly from the Vue 3 web app.
-1. This project is using @pnp/sp v2, not v3 which is the latest
+2. You do not need to initialize 'sp' in the webpart. Just use it directly from the Vue 3 web app.
+3. This project is using @pnp/sp v3 which is the latest.
 
 ### Editable properties and passing them to the Vue 3 web app
 
