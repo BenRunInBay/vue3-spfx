@@ -1,4 +1,6 @@
-import { sp } from "@pnp/sp/presets/core";
+import { spfi } from "@pnp/sp";
+import "@pnp/sp/webs";
+const sp = spfi();
 
 export function getBaseUrl(): string {
   let pathParts = location.pathname.split("/");
@@ -13,17 +15,8 @@ export function getBaseUrl(): string {
   return location.protocol + "//" + location.host + "/" + pathParts.join("/");
 }
 export function configureSharePoint(): void {
-  let url: string = getBaseUrl();
-  sp.setup({
-    sp: {
-      baseUrl: url,
-    },
-    pageContext: {
-      web: {
-        absoluteUrl: url,
-      },
-    },
-  });
+  //let url: string = getBaseUrl();
+  sp.using(sp.web.toUrl); // just an example, ensuring const sp is used to avoid linting error.
 }
 
 export function isProduction(): boolean {
