@@ -20,6 +20,17 @@ Log "REMINDER: update version in package.json before running this script because
 Log "Building webpart..."
 npm run build
 
+Remove-Item webpart/src/webparts/assets/fonts -Recurse -Force -ErrorAction Ignore
+Remove-Item webpart/src/webparts/assets/mock-data -Recurse -Force -ErrorAction Ignore
+Remove-Item webpart/src/webparts/assets/*.ico -ErrorAction Ignore
+Remove-Item webpart/src/webparts/assets/*.html -ErrorAction Ignore
+Remove-Item webpart/src/webparts/assets/*.css -ErrorAction Ignore
+
+Log "Creating declaration file for index js..."
+Remove-Item webpart\src\webparts\assets\appcode\*.d.ts -ErrorAction Ignore
+$indexjsname = (Get-ChildItem -Path "webpart\src\webparts\assets\appcode" *.js | Select-Object BaseName).BaseName
+New-Item -Path "webpart\src\webparts\assets\appcode" -Name "$indexjsname.d.ts" -Value "export = '$indexjsname'; export declare function renderVue(appID);"
+
 Log "Bundling assets..."
 $programPath = "node_scripts\bundle-webpart-assets.js"
 $cmd = "node"
