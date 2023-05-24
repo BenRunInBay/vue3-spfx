@@ -19,11 +19,6 @@ Log "REMINDER: update version in package.json before running this script because
 
 Log "Building webpart..."
 npm run build
-Remove-Item webpart/src/webparts/assets/fonts -Recurse -Force -ErrorAction Ignore
-Remove-Item webpart/src/webparts/assets/mock-data -Recurse -Force -ErrorAction Ignore
-Remove-Item webpart/src/webparts/assets/*.ico -ErrorAction Ignore
-Remove-Item webpart/src/webparts/assets/*.html -ErrorAction Ignore
-Remove-Item webpart/src/webparts/assets/*.css -ErrorAction Ignore
 
 Log "Bundling assets..."
 $programPath = "node_scripts\bundle-webpart-assets.js"

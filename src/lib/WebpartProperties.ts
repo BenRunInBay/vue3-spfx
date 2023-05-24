@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable guard-for-in */
-/**
- * WebpartProperties
- * @date 2022-09-12
- */
 
 /* const dashToCamel = (str: string) => {
     return str.replace(/\W+(.)/g, (index, chr) => {
