@@ -2,7 +2,7 @@
  * WebpartProperties
  * @date 2022-09-12
  */
- const dashToCamel = (str: string) => {
+const dashToCamel = (str: string) => {
     return str.replace(/\W+(.)/g, (index, chr) => {
         return chr.toUpperCase();
     });
